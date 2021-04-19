@@ -33,7 +33,7 @@ class PointsRestController {
 	private final Map<String, Integer> db = new ConcurrentHashMap<>();
 
 	private Map<String, Object> pointsFor(String u) {
-		return pointsFor(u, this.db.get("points"));
+		return pointsFor(u, this.db.get(u));
 	}
 
 	private Map<String, Object> pointsFor(String u, int i) {
@@ -51,12 +51,8 @@ class PointsRestController {
 
 	@PostMapping
 	Map<String, Object> write(@PathVariable String username,
-																											@RequestBody Map <String, Integer>  points) {
-
-		System.out.println(points);
-		System.out.println(points.getClass());
-		//this.db.put(username, points.get("points"));
-
+																											@RequestBody Map<String, Integer> points) {
+		this.db.put(username, points.get("points"));
 		return this.pointsFor(username);
 	}
 
