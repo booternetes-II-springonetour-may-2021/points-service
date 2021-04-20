@@ -55,6 +55,4 @@ class PointsRestController {
 		this.db.put(username, points.get("points"));
 		return this.pointsFor(username);
 	}
-
-
 }
