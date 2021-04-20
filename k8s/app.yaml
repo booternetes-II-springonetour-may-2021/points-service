@@ -7,11 +7,12 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  name: points
+  name: points-service
   namespace: bk
   labels:
     app: points
 spec:
+  type: LoadBalancer
   selector:
     app: points
   ports:

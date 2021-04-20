@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
+
+def_host=localhost:8080
+my_host=${1:-${def_host}}
+
+echo  the host is "$my_host"
 echo "going to write the points..."
-curl  \
+curl \
   -H "Accept: application/json" \
   -H "Content-Type:application/json" \
-  -X POST --data '{"points": "2432"}'  http://localhost:8080/points/jlong
+  -X POST --data '{"points": "2432"}' http://${my_host}/points/jlong
 
 echo
 
 echo "going to read the points..."
-curl http://localhost:8080/points/jlong
+curl http://${my_host}/points/jlong
