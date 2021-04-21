@@ -51,7 +51,11 @@ class PointsRestController {
 
 	@PostMapping
 	Map<String, Object> write(@PathVariable String username, @RequestBody Map<String, Object> points) {
-		this.db.put(username, this.db.getOrDefault(username, 0) + Integer.parseInt((String) points.get("points")));
+		int add = Integer.parseInt((String) points.get("points"));
+		int existing = this.db.getOrDefault(username, 0);
+//		System.out.println("adding: " + add);
+//		System.out.println("existing: " + existing);
+		this.db.put(username, existing + add);
 		return this.pointsFor(username);
 	}
 }
