@@ -46,8 +46,8 @@ class PointsRestController {
 	}
 
 	@PostMapping
-	Map<String, Object> write(@PathVariable String username, @RequestBody Map<String, Integer> points) {
-		int add = points.get("points");
+	Map<String, Object> write(@PathVariable String username, @RequestBody Map<String, Object> points) {
+		int add = (int) points.get("points");
 		return pointsService.addPoints(username, add);
 	}
 }
