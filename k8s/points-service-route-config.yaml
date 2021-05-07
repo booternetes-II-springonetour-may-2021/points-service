@@ -1,0 +1,15 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayRouteConfig
+metadata:
+  name: points-service-route-config
+spec:
+  service:
+    name: points-service
+  routes:
+    - predicates:
+        - Path=/api/points/{username}
+        - Method=GET
+      filters:
+        - RateLimit=2,10s
+      tags:
+        - "points"

@@ -1,0 +1,9 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayMapping
+metadata:
+  name: points-service-routes
+spec:
+  gatewayRef:
+    name: booternetes-gw
+  routeConfigRef:
+    name: points-service-route-config
